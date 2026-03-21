@@ -1,0 +1,41 @@
+{
+    "compilerOptions": {
+        "target": "ES2020",
+        "useDefineForClassFields": true,
+        "lib": ["ES2020", "DOM", "DOM.Iterable"],
+        "allowJs": false,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "jsx": "react-jsx",
+        "baseUrl": ".",
+        "paths": {
+            "@portfolio/app": ["src/packages/app/index.ts"],
+            "@portfolio/app/*": ["src/packages/app/*"],
+
+            "@portfolio/api": ["src/packages/api-service/index.ts"],
+            "@portfolio/api/*": ["src/packages/api-service/*"],
+
+            "@portfolio/common": ["src/packages/common/index.ts"],
+            "@portfolio/common/*": ["src/packages/common/*"],
+
+            "@portfolio/contact": ["src/packages/contact/index.ts"],
+            "@portfolio/contact/*": ["src/packages/contact/*"],
+
+            "@portfolio/home": ["src/packages/home/index.ts"],
+            "@portfolio/home/*": ["src/packages/home/*"],
+
+            "@portfolio/work": ["src/packages/work/index.ts"],
+            "@portfolio/work/*": ["src/packages/work/*"],
+        }
+    },
+    "include": ["src"],
+    "references": []
+}
