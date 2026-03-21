@@ -1,4 +1,4 @@
-import { submitContactForm } from "@portfolio/api";
+import { APIService } from "@portfolio/api";
 import { useState } from "react";
 import type { ContactFormData, ContactStatus } from "./types";
 
@@ -23,7 +23,7 @@ export function useContactForm() {
         setStatus("loading");
 
         try {
-            await submitContactForm(formData);
+            await APIService.submitContactForm(formData);
             setStatus("success");
             setFormData(INITIAL_FORM);
         } catch {

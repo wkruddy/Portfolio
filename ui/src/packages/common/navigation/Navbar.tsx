@@ -1,7 +1,7 @@
+import type { TabKey } from "@portfolio/common";
+import { NAV_ITEMS, SITE_CONFIG } from "@portfolio/common";
 import { motion } from "framer-motion";
 import { Menu } from "lucide-react";
-import { NAV_ITEMS } from "../../config/site";
-import type { TabKey } from "../../types/navigation";
 
 interface NavbarProps {
     activeTab: TabKey;
@@ -36,6 +36,16 @@ export function Navbar({ activeTab, onTabChange }: NavbarProps) {
                         </button>
                     ))}
                 </nav>
+
+                {/* Resume CTA */}
+                <a
+                    href={SITE_CONFIG.resumeUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hidden md:inline-flex items-center rounded-2xl border px-4 py-2 text-sm font-medium hover:bg-muted"
+                >
+                    View Resume
+                </a>
 
                 <button
                     className="md:hidden"
