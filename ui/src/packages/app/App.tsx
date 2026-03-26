@@ -1,6 +1,7 @@
 import { Navbar, useHashTab } from "@portfolio/common";
 import { Contact } from "@portfolio/contact";
 import { Home } from "@portfolio/home";
+import { sectionWrapClass } from "@portfolio/layout";
 import { Work } from "@portfolio/work";
 import type { FC } from "react";
 
@@ -11,7 +12,7 @@ export const App: FC = () => {
         <div className="min-h-screen bg-background text-foreground">
             <Navbar activeTab={activeTab} onTabChange={setTab} />
 
-            <main className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-6 py-12 md:px-10 lg:px-12">
+            <main className={sectionWrapClass}>
                 {activeTab === "home" && (
                     <section className="grid items-center gap-10 lg:grid-cols-[1.3fr_0.7fr] lg:py-10">
                         <Home onTabChange={setTab} />

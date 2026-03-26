@@ -1,9 +1,10 @@
+import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-    plugins: [react()],
+    plugins: [react(), tailwindcss()],
     resolve: {
         alias: {
             "@portfolio/app": path.resolve(__dirname, "src/packages/app"),
@@ -12,6 +13,10 @@ export default defineConfig({
             "@portfolio/contact": path.resolve(__dirname, "src/packages/contact"),
             "@portfolio/home": path.resolve(__dirname, "src/packages/home"),
             "@portfolio/work": path.resolve(__dirname, "src/packages/work"),
+            "@portfolio/layout": path.resolve(__dirname, "src/packages/layout"),
         },
+    },
+    build: {
+        outDir: "dist",
     },
 });

@@ -1,72 +1,72 @@
 import { SITE_CONFIG, TabKey } from "@portfolio/common";
+import { pillClass } from "@portfolio/layout";
 import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, Code2, Mail, UserRound } from "lucide-react";
+import { heroButtonPrimaryClass, heroButtonSecondaryClass } from "./home.styles";
 
 interface HeroSectionProps {
     onTabChange: (tab: TabKey) => void;
 }
 
-export const HeroSection = ({ onTabChange }: HeroSectionProps) => {
+export function HeroSection({ onTabChange }: HeroSectionProps) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="space-y-6"
+            className="flex flex-col gap-6"
         >
-            <div className="inline-flex items-center rounded-full border px-3 py-1 text-sm text-muted-foreground">
-                Software Engineer • Builder • Systems Thinker
+            <div className={`${pillClass} self-start border-sky-300/20 bg-sky-300/5`}>
+                Senior Software Engineer • Builder • Systems Thinker
             </div>
 
-            <div className="space-y-4">
-                <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-                    Hi, I’m Kyle.
-                </h1>
-                <p className="max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
-                    I build thoughtful software with a bias toward clarity, speed, and real-world
-                    usefulness. I’m especially interested in product engineering, internal
-                    platforms, AI-assisted workflows, and the systems that make teams more
-                    effective.
-                </p>
-            </div>
+            <h1 className="m-0 text-5xl font-semibold leading-none tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+                Hi, I’m Kyle.
+            </h1>
+
+            <p className="max-w-3xl text-lg leading-8 text-muted sm:text-xl">
+                I build thoughtful software with a bias toward clarity, speed, and real-world
+                usefulness. I’m especially interested in product engineering, internal platforms,
+                AI-assisted workflows, and the systems that make teams more effective.
+            </p>
 
             <div className="flex flex-wrap gap-3">
-                <button
-                    className="rounded-2xl border px-5 py-3 text-sm font-medium"
-                    onClick={() => onTabChange("work")}
-                >
-                    <span className="inline-flex items-center gap-2">
-                        View Projects <ArrowRight className="h-4 w-4" />
-                    </span>
+                <button className={heroButtonPrimaryClass} onClick={() => onTabChange("work")}>
+                    View Projects <ArrowRight size={18} />
                 </button>
-                <button
-                    className="rounded-2xl border px-5 py-3 text-sm font-medium"
-                    onClick={() => onTabChange("contact")}
+                <a
+                    className={heroButtonSecondaryClass}
+                    href={SITE_CONFIG.resumeUrl}
+                    target="_blank"
+                    rel="noreferrer"
                 >
+                    View Resume
+                </a>
+                <button className={heroButtonSecondaryClass} onClick={() => onTabChange("contact")}>
                     Get in Touch
                 </button>
             </div>
 
-            <div className="flex flex-wrap items-center gap-4 pt-2 text-sm text-muted-foreground">
+            <div className="flex flex-wrap items-center gap-5 pt-1 text-sm text-muted">
                 <a
+                    className="inline-flex items-center gap-2 transition hover:text-foreground"
                     href={SITE_CONFIG.githubUrl}
-                    className="inline-flex items-center gap-2 hover:text-foreground"
                 >
-                    <Github className="h-4 w-4" /> GitHub
+                    <Code2 size={18} /> GitHub
                 </a>
                 <a
+                    className="inline-flex items-center gap-2 transition hover:text-foreground"
                     href={SITE_CONFIG.linkedinUrl}
-                    className="inline-flex items-center gap-2 hover:text-foreground"
                 >
-                    <Linkedin className="h-4 w-4" /> LinkedIn
+                    <UserRound size={18} /> LinkedIn
                 </a>
                 <button
+                    className="inline-flex items-center gap-2 transition hover:text-foreground"
                     onClick={() => onTabChange("contact")}
-                    className="inline-flex items-center gap-2 hover:text-foreground"
                 >
-                    <Mail className="h-4 w-4" /> Contact
+                    <Mail size={18} /> Contact
                 </button>
             </div>
         </motion.div>
     );
-};
+}

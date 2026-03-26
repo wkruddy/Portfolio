@@ -4,7 +4,7 @@
     "version": "1.0.0",
     "type": "module",
     "scripts": {
-        "dev": "vite",
+        "start": "vite",
         "build": "tsc -b && vite build",
         "preview": "vite preview"
     },
@@ -15,12 +15,16 @@
         "react-dom": "^19.1.1"
     },
     "devDependencies": {
+        "@tailwindcss/vite": "^4.2.2",
         "@types/react": "^19.1.10",
         "@types/react-dom": "^19.1.7",
         "@vitejs/plugin-react": "^4.3.1",
-        "typescript": "^5.9.2",
-        "prettier": "2.7.1",
+        "autoprefixer": "^10.4.27",
         "jest": "28.1.1",
+        "postcss": "^8.5.8",
+        "prettier": "2.7.1",
+        "tailwindcss": "^4.2.2",
+        "typescript": "^5.9.2",
         "vite": "^5.4.19"
     }
 }

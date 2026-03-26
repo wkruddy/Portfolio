@@ -34,6 +34,9 @@
 
             "@portfolio/work": ["src/packages/work/index.ts"],
             "@portfolio/work/*": ["src/packages/work/*"],
+
+            "@portfolio/layout": ["src/packages/layout/index.ts"],
+            "@portfolio/layout/*": ["src/packages/layout/*"],
         }
     },
     "include": ["src"],

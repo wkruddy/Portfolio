@@ -1,10 +1,12 @@
+import { Panel } from "@portfolio/common";
+import { fieldClass } from "./contact.styles";
 import { useContactForm } from "./useContactForm";
 
 export function ContactForm() {
     const { formData, status, handleChange, handleSubmit } = useContactForm();
 
     return (
-        <div className="rounded-3xl border shadow-sm">
+        <Panel>
             <div className="p-6 sm:p-8">
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <input
@@ -19,7 +21,7 @@ export function ContactForm() {
 
                     <div className="grid gap-4 sm:grid-cols-2">
                         <div className="space-y-2">
-                            <label className="text-sm font-medium" htmlFor="name">
+                            <label className="text-sm font-medium text-slate-200" htmlFor="name">
                                 Name
                             </label>
                             <input
@@ -27,14 +29,14 @@ export function ContactForm() {
                                 name="name"
                                 value={formData.name}
                                 onChange={handleChange}
-                                className="w-full rounded-2xl border bg-background px-4 py-3 text-sm outline-none transition focus:ring-2"
+                                className={fieldClass}
                                 placeholder="Your name"
                                 required
                             />
                         </div>
 
                         <div className="space-y-2">
-                            <label className="text-sm font-medium" htmlFor="email">
+                            <label className="text-sm font-medium text-slate-200" htmlFor="email">
                                 Email
                             </label>
                             <input
@@ -43,7 +45,7 @@ export function ContactForm() {
                                 type="email"
                                 value={formData.email}
                                 onChange={handleChange}
-                                className="w-full rounded-2xl border bg-background px-4 py-3 text-sm outline-none transition focus:ring-2"
+                                className={fieldClass}
                                 placeholder="you@example.com"
                                 required
                             />
@@ -51,7 +53,7 @@ export function ContactForm() {
                     </div>
 
                     <div className="space-y-2">
-                        <label className="text-sm font-medium" htmlFor="message">
+                        <label className="text-sm font-medium text-slate-200" htmlFor="message">
                             Message
                         </label>
                         <textarea
@@ -60,34 +62,32 @@ export function ContactForm() {
                             value={formData.message}
                             onChange={handleChange}
                             rows={6}
-                            className="w-full rounded-2xl border bg-background px-4 py-3 text-sm outline-none transition focus:ring-2"
+                            className={fieldClass}
                             placeholder="Tell me a bit about what you're working on..."
                             required
                         />
                     </div>
 
-                    <div className="flex items-center gap-3">
+                    <div className="flex flex-wrap items-center gap-3">
                         <button
                             type="submit"
-                            className="rounded-2xl border px-5 py-3 text-sm font-medium"
+                            className="rounded-2xl bg-gradient-to-r from-sky-300 to-violet-400 px-5 py-3 text-sm font-semibold text-slate-950 shadow-glow disabled:cursor-not-allowed disabled:opacity-70"
                             disabled={status === "loading"}
                         >
                             {status === "loading" ? "Sending..." : "Send message"}
                         </button>
 
                         {status === "success" && (
-                            <p className="text-sm text-muted-foreground">
-                                Thanks — your message was sent.
-                            </p>
+                            <p className="text-sm text-muted">Thanks — your message was sent.</p>
                         )}
                         {status === "error" && (
-                            <p className="text-sm text-muted-foreground">
+                            <p className="text-sm text-rose-300">
                                 Something went wrong. Please try again.
                             </p>
                         )}
                     </div>
                 </form>
             </div>
-        </div>
+        </Panel>
     );
 }
