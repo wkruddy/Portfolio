@@ -9,7 +9,16 @@ contactRouter.post("/contact", async (req, res) => {
     const parsed = contactSchema.safeParse(req.body);
 
     if (!parsed.success) {
-        return res.status(400).json({ ok: false, error: "Invalid contact payload." });
+        return res.status(400).json({
+            error: "Please fix the highlighted fields.",
+            fieldErrors: parsed.error.issues.reduce<Record<string, string>>((acc, issue) => {
+                const field = issue.path[0];
+                if (typeof field === "string" && !acc[field]) {
+                    acc[field] = issue.message;
+                }
+                return acc;
+            }, {}),
+        });
     }
 
     const { name, email, message, company } = parsed.data;
@@ -25,14 +34,14 @@ contactRouter.post("/contact", async (req, res) => {
         subject: `Portfolio contact from ${name}`,
         text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
         html: `
-      <div>
-        <h2>Portfolio contact</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <div style="white-space: pre-wrap;">${message}</div>
-      </div>
-    `,
+        <div>
+            <h2>Portfolio contact</h2>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Message:</strong></p>
+            <div style="white-space: pre-wrap;">${message}</div>
+        </div>
+        `,
     });
 
     if (result.error) {

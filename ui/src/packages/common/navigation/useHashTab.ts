@@ -1,5 +1,6 @@
-import type { TabKey } from "@portfolio/common";
 import { useEffect, useState } from "react";
+import { useReducedMotion } from "../utils/useReducedMotion";
+import type { TabKey } from "./types";
 
 const VALID_TABS: TabKey[] = ["home", "work", "contact"];
 
@@ -11,22 +12,24 @@ function getHashTab(): TabKey {
 
 export function useHashTab() {
     const [activeTab, setActiveTab] = useState<TabKey>(getHashTab());
+    const reducedMotion = useReducedMotion();
+    const scrollBehavior: ScrollBehavior = reducedMotion ? "auto" : "smooth";
 
     useEffect(() => {
         const onHashChange = () => {
             setActiveTab(getHashTab());
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            window.scrollTo({ top: 0, behavior: scrollBehavior });
         };
 
         window.addEventListener("hashchange", onHashChange);
         setActiveTab(getHashTab());
 
         return () => window.removeEventListener("hashchange", onHashChange);
-    }, []);
+    }, [scrollBehavior]);
 
     const setTab = (tab: TabKey) => {
         window.location.hash = tab;
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({ top: 0, behavior: scrollBehavior });
         setActiveTab(tab);
     };
 

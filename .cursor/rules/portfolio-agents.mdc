@@ -1,0 +1,32 @@
+---
+description: Portfolio multi-agent lanes — research/UX/docs vs ui/ vs server/
+globs: ui/**/*,server/**/*,docs/**/*
+alwaysApply: false
+---
+
+# Portfolio agent lanes
+
+When editing files in this repo, stay in the lane that matches the path unless the user invoked **portfolio-orchestrator** or explicitly approved cross-lane work.
+
+| Path | Lane | Skill |
+|------|------|-------|
+| `ui/**` | Frontend | `portfolio-frontend` |
+| `server/**` | Backend | `portfolio-backend` |
+| `docs/handoffs/**`, UX/research docs | Research / UX | `portfolio-research`, `portfolio-ux` |
+| Cross-cutting planning | Orchestrator | `portfolio-orchestrator` |
+
+## Gates
+
+1. **No net-new visual or IA work** in `ui/` without an approved `docs/handoffs/ux-spec.md` (and `ux-to-frontend.md`).
+2. **No API contract changes** in `server/` without `docs/handoffs/ux-to-backend.md` aligned to the same spec version.
+3. **Authenticity**: Do not add fictional employers, repos, or case studies. Staff++ voice — specific, not salesy.
+
+## Handoffs
+
+Templates live in `docs/handoffs/`. Full pipeline: [docs/agent-orchestration.md](../../docs/agent-orchestration.md).
+
+## Conflicts
+
+- Look, copy, IA → UX wins.
+- API shape, validation, security → Backend wins.
+- Component structure inside `ui/` → Frontend wins.

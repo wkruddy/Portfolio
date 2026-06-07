@@ -1,11 +1,16 @@
 import cors from "cors";
 import express from "express";
-import rateLimit from "express-rate-limit";
 import { analyticsRouter } from "./routes/analytics";
 import { contactRouter } from "./routes/contact";
+import { apiRateLimiter } from "./middleware/rateLimit";
+import { requestLoggerMiddleware } from "./middleware/requestLogger";
 import { env } from "./utils/env";
 
 const app = express();
+const apiBasePaths = ["/api", "/contact-api/api"];
+
+// If deployed behind a reverse proxy, `req.ip` becomes meaningful with this enabled.
+app.set("trust proxy", true);
 
 app.use(
     cors({
@@ -15,21 +20,26 @@ app.use(
 
 app.use(express.json({ limit: "20kb" }));
 
-app.use(
-    "/api",
-    rateLimit({
-        windowMs: 15 * 60 * 1000,
-        max: 50,
-        standardHeaders: true,
-        legacyHeaders: false,
-    }),
-);
+app.use(requestLoggerMiddleware);
+
+for (const basePath of apiBasePaths) {
+    app.use(
+        basePath,
+        apiRateLimiter,
+    );
+}
 
 app.get("/api/health", (_req, res) => {
     res.json({ ok: true, service: "portfolio-server" });
 });
 
-app.use("/api", contactRouter);
+app.get("/contact-api/api/health", (_req, res) => {
+    res.json({ ok: true, service: "portfolio-server" });
+});
+
+for (const basePath of apiBasePaths) {
+    app.use(basePath, contactRouter);
+}
 app.use("/api/analytics", analyticsRouter);
 
 app.listen(env.port, () => {

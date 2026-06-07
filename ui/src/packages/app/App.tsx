@@ -1,12 +1,22 @@
-import { Navbar, useHashTab } from "@portfolio/common";
+import { Navbar, trackTabView, useHashTab } from "@portfolio/common";
 import { Contact } from "@portfolio/contact";
 import { Home } from "@portfolio/home";
 import { sectionWrapClass } from "@portfolio/layout";
 import { Work } from "@portfolio/work";
 import type { FC } from "react";
+import { useEffect, useRef } from "react";
 
 export const App: FC = () => {
     const { activeTab, setTab } = useHashTab();
+    const tabViewTracked = useRef(false);
+
+    useEffect(() => {
+        if (!tabViewTracked.current) {
+            tabViewTracked.current = true;
+            return;
+        }
+        trackTabView(activeTab);
+    }, [activeTab]);
 
     return (
         <div className="min-h-screen bg-background text-foreground">

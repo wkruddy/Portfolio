@@ -5,6 +5,14 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
     plugins: [react(), tailwindcss()],
+    server: {
+        proxy: {
+            "/contact-api": {
+                target: "http://localhost:3000",
+                changeOrigin: true,
+            },
+        },
+    },
     resolve: {
         alias: {
             "@portfolio/app": path.resolve(__dirname, "src/packages/app"),

@@ -1,4 +1,4 @@
 import type { FC } from "react";
-import { ProjectGrid } from "./ProjectGrid";
+import { ImpactThemes } from "./ProjectGrid";
 
-export const Work: FC = () => <ProjectGrid />;
+export const Work: FC = () => <ImpactThemes />;

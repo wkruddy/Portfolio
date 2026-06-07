@@ -8,8 +8,8 @@ export function ContactContent() {
                 opportunities to create leverage through better tools and better software.
             </p>
             <p className="text-sm text-muted-foreground">
-                This form posts to a lightweight Node backend that handles validation, spam
-                mitigation, analytics, and email delivery.
+                Messages go through a small Node service for validation, spam protection, and
+                delivery—no marketing list.
             </p>
         </div>
     );
