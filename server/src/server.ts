@@ -41,6 +41,7 @@ for (const basePath of apiBasePaths) {
     app.use(basePath, contactRouter);
 }
 app.use("/api/analytics", analyticsRouter);
+app.use("/contact-api/api/analytics", analyticsRouter);
 
 app.listen(env.port, () => {
     console.log(`Portfolio server listening on port ${env.port}`);

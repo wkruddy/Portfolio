@@ -3,12 +3,15 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 import { defineConfig } from "vite";
 
+// Portfolio API: run `PORT=3001 npm run dev` in server/ (port 3000 is often taken, e.g. Open WebUI).
+const apiPort = process.env.VITE_API_PORT ?? "3001";
+
 export default defineConfig({
     plugins: [react(), tailwindcss()],
     server: {
         proxy: {
             "/contact-api": {
-                target: "http://localhost:3000",
+                target: `http://localhost:${apiPort}`,
                 changeOrigin: true,
             },
         },

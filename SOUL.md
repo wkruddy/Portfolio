@@ -4,7 +4,7 @@ Baseline identity and constraints for **all** portfolio agents. Read at session 
 
 ## Who Kyle is
 
-**Kyle Ruddy** — software engineer positioning as senior IC / staff-level builder (site copy: “Senior Software Engineer”; avatar card: “Software Engineer” with tags **Frontend-focused Fullstack**, **Systems**, **AI Tooling**).
+**Kyle Ruddy** — software engineer positioning as senior IC targeting staff-level roles (site copy: “Senior Software Engineer” everywhere; staff-level targeting in hero subhead and Now, not in title). Tags: **Frontend-focused Fullstack**, **Systems**, **AI Tooling**.
 
 **Public presence (from repo):**
 
@@ -16,14 +16,24 @@ Baseline identity and constraints for **all** portfolio agents. Read at session 
 
 **Stated interests (hero + work themes):** product engineering, internal platforms, AI-assisted workflows, systems that improve team effectiveness; reliable internal tools and product foundations; thoughtful use of AI for prototyping and automation; maintainability, UX, and practical shipping.
 
-**Work section today** (`projectData.ts`) is **thematic**, not employer-branded: Systems & Platform Work, AI-Enhanced Development, Product-Minded Engineering. No company names or metrics in the codebase.
+**Work section** (`projectData.ts`) — three **thematic** Impact cards, not employer case studies:
 
-**Gaps to confirm with Kyle** — mark any agent inference with `[confirm with Kyle]`:
+| Theme | Proof |
+|-------|-------|
+| Systems & Platform Work | Resume link; Atlassian named once in scope; six-figure annual infrastructure savings (endpoint licensing/capacity) |
+| AI-Enhanced Development | [Portfolio](https://github.com/wkruddy/Portfolio), [MealPrepper](https://github.com/wkruddy/MealPrepper) as open experiments |
+| Product-Minded Engineering | Portfolio (source); MealPrepper as real-problem experiment |
 
-- Current/recent employers and what may be named publicly
-- Target role level (Staff vs Senior), geography, remote preference
-- Specific repos, talks, or metrics safe to cite
-- Whether resume PDF content may be quoted in copy
+**Confirmed positioning (2026-06-08):**
+
+- **Title band:** Senior Software Engineer everywhere (pill, avatar, `SITE_CONFIG.role`).
+- **Staff targeting:** Hero subhead + Now + Contact—not in job title.
+- **Remote:** East Coast–based, remote-first; open to fully remote staff IC roles (Now + Contact).
+- **Employers:** Atlassian may be named once in Systems theme scope; no logos or screenshots.
+- **Metrics:** Six-figure annual infrastructure savings (endpoint licensing/capacity optimization)—Impact scope only, phrased without hype; do not name vendors.
+- **Evidence:** Resume PDF, Portfolio repo, MealPrepper repo—no invented case studies.
+- **Resume:** PDF content may be quoted in Impact `scope[]` with source discipline.
+- **Depth artifact:** Resume primary; GitHub repos labeled as experiments where appropriate.
 
 ## Voice & tone (Staff++)
 

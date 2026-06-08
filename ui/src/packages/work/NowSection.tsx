@@ -9,8 +9,8 @@ export function NowSection() {
                     Current focus
                 </h3>
                 <p className="leading-7 text-muted">
-                    Building and improving systems where clarity, team leverage, and thoughtful
-                    tooling matter.
+                    Building in public on AI-assisted workflows and platform tooling; exploring
+                    staff-level IC opportunities. East Coast–based, remote-first.
                 </p>
             </div>
         </Panel>

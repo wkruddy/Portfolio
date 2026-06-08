@@ -32,9 +32,8 @@ export function HeroSection({ onTabChange }: HeroSectionProps) {
             </h1>
 
             <p className="max-w-3xl text-lg leading-8 text-muted sm:text-xl">
-                I build thoughtful software with a bias toward clarity, speed, and real-world
-                usefulness. I&apos;m especially interested in product engineering, internal platforms,
-                AI-assisted workflows, and the systems that make teams more effective.
+                I work on internal platforms and reliability at org scale—turning fragile systems
+                into things teams can run without heroics. Targeting staff-level IC roles.
             </p>
 
             <div className="flex flex-wrap gap-3">
