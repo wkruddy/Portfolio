@@ -124,26 +124,63 @@ Browser
 ### Step A2 — Node API via Setup Node.js App
 
 1. cPanel → **Setup Node.js App** → **Create Application**
-2. Suggested settings:
+2. Use these **exact field values** (replace `USERNAME` and `kyleruddy.com` with your cPanel user and live domain):
 
-   | Field | Value |
-   |-------|-------|
-   | Node.js version | **20.x or 22.x** (match `.nvmrc`: 21 locally; pick closest available) |
-   | Application mode | Production |
-   | Application root | e.g. `/home/USERNAME/portfolio-server` (outside `public_html`) |
-   | Application URL | `yourdomain.com` + path **`contact-api`** |
-   | Application startup file | `dist/server.js` |
+   | cPanel field | Value | Notes |
+   |--------------|-------|-------|
+   | **Node.js version** | **22.x** (or **20.x** if 22 unavailable) | Pick the newest **LTS** offered. Repo `.nvmrc` is 21 locally — closest LTS on cPanel is fine. |
+   | **Application mode** | **Production** | |
+   | **Application root** | `/home/USERNAME/portfolio-server` | **Outside** `public_html`. Good alternates: `~/portfolio-api`, `~/contact-api`. Never put the API root inside `public_html` except the Passenger stub folder cPanel creates. |
+   | **Application URL** | Domain: `kyleruddy.com` (or `www.kyleruddy.com` if that is canonical) · Path: **`contact-api`** | **Use a path, not a subdomain.** The SPA calls `/contact-api/api/contact` (same origin). A subdomain (`api.kyleruddy.com`) would require rebuilding the UI with different endpoints. |
+   | **Application startup file** | `dist/server.js` | Relative to application root. Build locally first: `cd server && npm ci && npm run build`. |
 
-3. **Add environment variables** in the same UI (`RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL`, `ALLOWED_ORIGINS`).
-4. Upload server files to application root (zip → extract, or SFTP): `package.json`, `package-lock.json` or `yarn.lock`, compiled `dist/`, omit `node_modules`.
+3. **Environment variables** — paste in the Node.js App UI only. Copy values from your local `server/.env` (never commit `.env` to git; do not upload `.env` to the server):
+
+   | Variable | Copy from local? | Purpose |
+   |----------|------------------|---------|
+   | `RESEND_API_KEY` | **Yes** | Resend API key for outbound email |
+   | `CONTACT_TO_EMAIL` | **Yes** | Inbox that receives contact form submissions |
+   | `CONTACT_FROM_EMAIL` | **Yes** | From header Resend sends (e.g. `Portfolio <noreply@…>`) |
+   | `ALLOWED_ORIGINS` | **Yes** (edit for prod) | Comma-separated browser origins allowed by CORS — must include `https://kyleruddy.com` and `https://www.kyleruddy.com` if both work |
+   | `PORT` | **Yes** (optional on shared) | Passenger usually injects the listen port; setting `3000` to match local is harmless. Do not try to bind 80/443 in Express. |
+
+4. **Upload to application root only** (`/home/USERNAME/portfolio-server/`):
+   - `package.json`, `package-lock.json` (or `yarn.lock`)
+   - `dist/` (compiled output, including `dist/server.js`)
+   - Optional: `data/` if you want analytics persisted on disk
+   - **Do not upload:** `ui/` or `ui/dist/` (static site goes in `public_html`), `node_modules` from your Mac, `src/` (not needed if `dist/` is present), `.env` file, `.git/`
+
 5. Click **Run NPM Install**, then **Restart**.
-6. In `public_html/contact-api/` (created by cPanel), edit `.htaccess` and add:
+6. In `public_html/contact-api/` (folder cPanel creates for the Application URL), edit `.htaccess` and add:
 
    ```apache
    RewriteEngine off
    ```
 
    This stops Apache from rewriting API requests ([reference](https://davenewman.tech/blog/host-node-namecheap-cpanel/)).
+
+#### cPanel checklist (Kyle)
+
+- [ ] Built UI locally: `cd ui && npm ci && npm run build`
+- [ ] Uploaded **contents** of `ui/dist/` into `public_html/` (not the `dist` folder itself)
+- [ ] Built server locally: `cd server && npm ci && npm run build`
+- [ ] Created Node.js app: application root **outside** `public_html`, URL path **`contact-api`**
+- [ ] Startup file: `dist/server.js`
+- [ ] Pasted env vars in cPanel UI (not uploaded as `.env`)
+- [ ] `ALLOWED_ORIGINS` includes production `https://…` origin(s), no typos or trailing slashes
+- [ ] Uploaded server artifacts to application root; **Run NPM Install** on server
+- [ ] **Restart** Node app after env or code changes
+- [ ] Set `RewriteEngine off` in `public_html/contact-api/.htaccess`
+- [ ] `curl https://kyleruddy.com/contact-api/api/health` → `{"ok":true,"service":"portfolio-server"}`
+- [ ] Contact form on live site sends email via Resend
+
+#### Passenger + static site (how they coexist)
+
+- **Apache** serves the React build from `public_html/` for `/`, `/assets/*`, `/resume.pdf`, etc.
+- **Passenger** handles only URLs under **`/contact-api`** and forwards them to Express in your application root.
+- The frontend uses relative paths (`/contact-api/api/contact` in `constants.ts`). **Application URL path must be `contact-api`** so public URLs match what the SPA calls.
+- Express **dual-mounts** routes at both `/api/*` and `/contact-api/api/*` (`server/src/server.ts`) so health, contact, and analytics work whether the proxy strips the prefix or not.
+- cPanel creates `public_html/contact-api/` as a routing stub — it is **not** where server code lives; only the `.htaccess` tweak lives there.
 
 ### Step A3 — Verify
 

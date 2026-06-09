@@ -31,11 +31,7 @@ export const App: FC = () => {
 
                 {activeTab === "work" && <Work />}
 
-                {activeTab === "contact" && (
-                    <section className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-                        <Contact />
-                    </section>
-                )}
+                {activeTab === "contact" && <Contact />}
             </main>
         </div>
     );

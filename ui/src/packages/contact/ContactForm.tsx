@@ -1,5 +1,15 @@
 import { Panel } from "@portfolio/common";
-import { fieldClass } from "./contact.styles";
+import {
+    contactFieldGroupClass,
+    contactFormClass,
+    contactFormContainerClass,
+    contactFormPaddingClass,
+    contactLabelClass,
+    contactNameEmailGridClass,
+    fieldClass,
+    submitButtonClass,
+    textareaClass,
+} from "./contact.styles";
 import { useContactForm } from "./useContactForm";
 
 export function ContactForm() {
@@ -7,13 +17,18 @@ export function ContactForm() {
 
     const fieldClassFor = (fieldName: string) =>
         fieldErrors[fieldName]
-            ? `${fieldClass} border-rose-300/60 focus:border-rose-300/70 focus:ring-rose-300/20`
+            ? `${fieldClass} border-rose-300/60 focus-visible:border-rose-300/70 focus-visible:ring-rose-300/20`
             : fieldClass;
 
+    const textareaClassFor = (fieldName: string) =>
+        fieldErrors[fieldName]
+            ? `${textareaClass} border-rose-300/60 focus-visible:border-rose-300/70 focus-visible:ring-rose-300/20`
+            : textareaClass;
+
     return (
-        <Panel>
-            <div className="p-6 sm:p-8">
-                <form onSubmit={handleSubmit} className="space-y-4">
+        <Panel className={contactFormContainerClass}>
+            <div className={contactFormPaddingClass}>
+                <form onSubmit={handleSubmit} className={contactFormClass}>
                     <input
                         type="text"
                         name="company"
@@ -24,9 +39,9 @@ export function ContactForm() {
                         value={formData.company}
                     />
 
-                    <div className="grid gap-4 sm:grid-cols-2">
-                        <div className="space-y-2">
-                            <label className="text-sm font-medium text-slate-200" htmlFor="name">
+                    <div className={contactNameEmailGridClass}>
+                        <div className={contactFieldGroupClass}>
+                            <label className={contactLabelClass} htmlFor="name">
                                 Name
                             </label>
                             <input
@@ -44,8 +59,8 @@ export function ContactForm() {
                             )}
                         </div>
 
-                        <div className="space-y-2">
-                            <label className="text-sm font-medium text-slate-200" htmlFor="email">
+                        <div className={contactFieldGroupClass}>
+                            <label className={contactLabelClass} htmlFor="email">
                                 Email
                             </label>
                             <input
@@ -65,8 +80,8 @@ export function ContactForm() {
                         </div>
                     </div>
 
-                    <div className="space-y-2">
-                        <label className="text-sm font-medium text-slate-200" htmlFor="message">
+                    <div className={contactFieldGroupClass}>
+                        <label className={contactLabelClass} htmlFor="message">
                             Message
                         </label>
                         <textarea
@@ -74,8 +89,8 @@ export function ContactForm() {
                             name="message"
                             value={formData.message}
                             onChange={handleChange}
-                            rows={6}
-                            className={fieldClassFor("message")}
+                            rows={5}
+                            className={textareaClassFor("message")}
                             placeholder="Tell me a bit about what you're working on..."
                             required
                             aria-invalid={Boolean(fieldErrors.message)}
@@ -85,10 +100,10 @@ export function ContactForm() {
                         )}
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-3">
+                    <div className="flex flex-wrap items-center gap-3 pt-1">
                         <button
                             type="submit"
-                            className="rounded-2xl bg-gradient-to-r from-sky-300 to-violet-400 px-5 py-3 text-sm font-semibold text-slate-950 shadow-glow disabled:cursor-not-allowed disabled:opacity-70"
+                            className={submitButtonClass}
                             disabled={status === "loading"}
                         >
                             {status === "loading" ? "Sending..." : "Send message"}

@@ -146,6 +146,105 @@
       "ip": "::1",
       "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/3.6.31 Chrome/142.0.7444.265 Electron/39.8.1 Safari/537.36",
       "createdAt": "2026-06-08T18:42:01.419Z"
+    },
+    {
+      "type": "tab_view",
+      "path": "/",
+      "tab": "home",
+      "ip": "::1",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/3.6.31 Chrome/142.0.7444.265 Electron/39.8.1 Safari/537.36",
+      "createdAt": "2026-06-09T17:43:35.168Z"
+    },
+    {
+      "type": "page_view",
+      "path": "/events",
+      "ip": "::1",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/3.6.31 Chrome/142.0.7444.265 Electron/39.8.1 Safari/537.36",
+      "createdAt": "2026-06-09T17:43:35.170Z"
+    },
+    {
+      "type": "cta_click",
+      "path": "/",
+      "tab": "contact",
+      "meta": {
+        "cta": "nav_tab_contact"
+      },
+      "ip": "::1",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/3.6.31 Chrome/142.0.7444.265 Electron/39.8.1 Safari/537.36",
+      "createdAt": "2026-06-09T17:43:37.145Z"
+    },
+    {
+      "type": "page_view",
+      "path": "/events",
+      "ip": "::1",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/3.6.31 Chrome/142.0.7444.265 Electron/39.8.1 Safari/537.36",
+      "createdAt": "2026-06-09T17:43:37.146Z"
+    },
+    {
+      "type": "tab_view",
+      "path": "/",
+      "tab": "contact",
+      "ip": "::1",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/3.6.31 Chrome/142.0.7444.265 Electron/39.8.1 Safari/537.36",
+      "createdAt": "2026-06-09T17:43:37.152Z"
+    },
+    {
+      "type": "page_view",
+      "path": "/events",
+      "ip": "::1",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/3.6.31 Chrome/142.0.7444.265 Electron/39.8.1 Safari/537.36",
+      "createdAt": "2026-06-09T17:43:37.153Z"
+    },
+    {
+      "type": "cta_click",
+      "path": "/",
+      "tab": "contact",
+      "meta": {
+        "cta": "nav_tab_contact"
+      },
+      "ip": "::1",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/3.6.31 Chrome/142.0.7444.265 Electron/39.8.1 Safari/537.36",
+      "createdAt": "2026-06-09T17:43:37.398Z"
+    },
+    {
+      "type": "page_view",
+      "path": "/events",
+      "ip": "::1",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/3.6.31 Chrome/142.0.7444.265 Electron/39.8.1 Safari/537.36",
+      "createdAt": "2026-06-09T17:43:37.399Z"
+    },
+    {
+      "type": "cta_click",
+      "path": "/",
+      "tab": "home",
+      "meta": {
+        "cta": "nav_tab_home"
+      },
+      "ip": "::1",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/3.6.31 Chrome/142.0.7444.265 Electron/39.8.1 Safari/537.36",
+      "createdAt": "2026-06-09T17:44:05.790Z"
+    },
+    {
+      "type": "page_view",
+      "path": "/events",
+      "ip": "::1",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/3.6.31 Chrome/142.0.7444.265 Electron/39.8.1 Safari/537.36",
+      "createdAt": "2026-06-09T17:44:05.790Z"
+    },
+    {
+      "type": "tab_view",
+      "path": "/",
+      "tab": "home",
+      "ip": "::1",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/3.6.31 Chrome/142.0.7444.265 Electron/39.8.1 Safari/537.36",
+      "createdAt": "2026-06-09T17:44:05.795Z"
+    },
+    {
+      "type": "page_view",
+      "path": "/events",
+      "ip": "::1",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/3.6.31 Chrome/142.0.7444.265 Electron/39.8.1 Safari/537.36",
+      "createdAt": "2026-06-09T17:44:05.796Z"
     }
   ]
 }
