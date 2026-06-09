@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { getEventSummary, recordEvent } from "../services/analyticsStore";
-import { analyticsEventSchema } from "../utils/validation";
-import { getClientIp } from "../utils/clientIp";
+import { getEventSummary, recordEvent } from "../services/analyticsStore.js";
+import { analyticsEventSchema } from "../utils/validation.js";
+import { getClientIp } from "../utils/clientIp.js";
 
 export const analyticsRouter = Router();
 

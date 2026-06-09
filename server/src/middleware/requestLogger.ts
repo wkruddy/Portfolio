@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from "express";
-import { getClientIp } from "../utils/clientIp";
-import { recordEvent } from "../services/analyticsStore";
+import { getClientIp } from "../utils/clientIp.js";
+import { recordEvent } from "../services/analyticsStore.js";
 
 export function requestLoggerMiddleware(req: Request, res: Response, next: NextFunction) {
     const start = Date.now();

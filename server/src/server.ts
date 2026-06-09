@@ -1,10 +1,10 @@
 import cors from "cors";
 import express from "express";
-import { analyticsRouter } from "./routes/analytics";
-import { contactRouter } from "./routes/contact";
-import { apiRateLimiter } from "./middleware/rateLimit";
-import { requestLoggerMiddleware } from "./middleware/requestLogger";
-import { env } from "./utils/env";
+import { analyticsRouter } from "./routes/analytics.js";
+import { contactRouter } from "./routes/contact.js";
+import { apiRateLimiter } from "./middleware/rateLimit.js";
+import { requestLoggerMiddleware } from "./middleware/requestLogger.js";
+import { env } from "./utils/env.js";
 
 const app = express();
 const apiBasePaths = ["/api", "/contact-api/api"];

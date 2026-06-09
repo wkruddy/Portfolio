@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { resend } from "../services/resend";
-import { env } from "../utils/env";
-import { contactSchema } from "../utils/validation";
+import { resend } from "../services/resend.js";
+import { env } from "../utils/env.js";
+import { contactSchema } from "../utils/validation.js";
 
 export const contactRouter = Router();
 
